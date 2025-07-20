@@ -1,0 +1,19 @@
+Metadata-Version: 2.4
+Name: ft_package
+Version: 0.0.1
+Summary: A sample test package
+Home-page: https://github.com/your_username/ft_package
+Author: Ayman Marzouk
+Author-email: your_email@example.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+# ft_package
+
+A small Python package that provides `count_in_list`, a helper function to count how many times an element appears in a list.
