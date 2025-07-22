@@ -1,5 +1,8 @@
 def ft_filter(function, iterable):
-    """filter(function or None, iterable) --> filter object\n\nReturn an iterator yielding those items of iterable for which function(item)\nis true. If function is None, return the items that are true."""
+    """filter(function or None, iterable) --> filter object
+
+Return an iterator yielding those items of iterable for which function(item)
+is true. If function is None, return the items that are true."""
     if function is None:
         return [item for item in iterable if item]  # if function is None
         # filter out all False-equivalent values like 0, False, None, etc.
