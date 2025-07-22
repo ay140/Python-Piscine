@@ -1,8 +1,5 @@
 def ft_filter(function, iterable):
-    """
-    Reimplements the built-in filter function using list comprehension.
-    If function is None, filters out all False-equivalent values.
-    """
+    """filter(function or None, iterable) --> filter object\n\nReturn an iterator yielding those items of iterable for which function(item)\nis true. If function is None, return the items that are true."""
     if function is None:
         return [item for item in iterable if item]  # if function is None
         # filter out all False-equivalent values like 0, False, None, etc.

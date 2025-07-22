@@ -1,17 +1,29 @@
-import time # module to get the current time in seconds since the epoch
-from datetime import datetime # import the datetime class from the datetime module
+import time  # We use only the time module
 
-epoch_time = time.time() # get the current time in seconds since the epoch
-print(f"Seconds since January 1, 1970: {epoch_time:.4f} or {epoch_time:.2e}") # print the time in seconds or in scientific notation
-print(datetime.fromtimestamp(epoch_time).strftime('%b %d %Y')) # print the time in the format of month day year
+def main():
+    """
+    Display the number of seconds since the Epoch (Jan 1, 1970)
+    in both decimal and scientific notation, followed by current date.
+    """
 
-# %b → Short month name (e.g. Jul)
+    now = time.time()
+    # Get the current time in seconds since Jan 1, 1970 (Epoch time).
+    # Example: 1696590902.9453
 
-# %d → Day of the month (e.g. 13)
+    print(f"Seconds since January 1, 1970: {now:,.4f} or {now:.2e} in scientific notation")    # Format the time in two ways:
+    # - {now:.4f} → fixed-point notation with 4 decimal places (e.g., 1696590902.9453)
+    # - {now:.2e} → scientific notation with 2 decimal places (e.g., 1.70e+09)
 
-# %Y → Year (e.g. 2025)
+    print(time.strftime("%b %d %Y", time.localtime(now)))
+    # Convert the timestamp to a human-readable date:
+    # - %b = abbreviated month name (e.g., Oct)
+    # - %d = day of the month (e.g., 06)
+    # - %Y = full year (e.g., 2023)
+    # Final output: Oct 06 2023
 
-
+if __name__ == "__main__":
+    main()
+    # This ensures that the main() function runs only if the script is executed directly.
 # 🕰️ What does epoch mean?
 # In computing, epoch refers to a fixed point in time that computers use as a reference to calculate time.
 
