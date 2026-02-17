@@ -21,8 +21,8 @@ def give_bmi(
         if not isinstance(h, (int, float)) or not isinstance(w, (int, float)):
             print("Error: List elements must be int or float.")
             return []
-        if h <= 0:
-            print("Error: Height must be positive.")
+        if h <= 0 or w <= 0:
+            print("Error: Height and weight must be positive.")
             return []
         bmi_values.append(w / (h ** 2))
     return bmi_values
@@ -39,4 +39,8 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     Returns:
         list[bool]: List of booleans indicating if BMI is above the limit.
     """
-    return [b > limit for b in bmi]
+    try:
+        return [b > limit for b in bmi]
+    except Exception as e:
+        print(f"Error: {e}")
+        return []
