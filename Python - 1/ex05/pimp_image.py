@@ -5,12 +5,13 @@ import matplotlib.pyplot as plt
 def ft_invert(array):
     """
     Inverts the color of the image received.
+    Allowed operators: =, +, -, *
     """
     try:
+        # 255 - array uses '-' operator.
         inverted = 255 - array
 
         plt.imshow(inverted)
-        plt.title("Invert")
         plt.show()
         return inverted
     except Exception as e:
@@ -21,17 +22,14 @@ def ft_invert(array):
 def ft_red(array):
     """
     Keeps only the red color of the image received.
+    Allowed operators: =, *
     """
     try:
-        # Check if array is valid/has 3 channels before operations
-        # to ensure operator restrictions don't mask fundamental issues?
-        # But we must use only restricted operators.
-        # "try-except" is a control structure, not an operator on the image.
-        # It handles the *execution flow*.
+        # Multiplies by [1, 0, 0] to keep Red (1) and zero out G/B (0).
+        # Uses '*' operator.
         red_filtered = array * [1, 0, 0]
 
         plt.imshow(red_filtered)
-        plt.title("Red")
         plt.show()
         return red_filtered
     except Exception as e:
@@ -42,10 +40,12 @@ def ft_red(array):
 def ft_green(array):
     """
     Keeps only the green color of the image received.
+    Allowed operators: =, -
     """
     try:
         green_filtered = array.copy()
 
+        # Subtracts channel from itself to get 0. Uses '-' operator.
         green_filtered[:, :, 0] = (
             green_filtered[:, :, 0] - green_filtered[:, :, 0]
         )
@@ -54,7 +54,6 @@ def ft_green(array):
         )
 
         plt.imshow(green_filtered)
-        plt.title("Green")
         plt.show()
         return green_filtered
     except Exception as e:
@@ -65,15 +64,16 @@ def ft_green(array):
 def ft_blue(array):
     """
     Keeps only the blue color of the image received.
+    Allowed operators: =
     """
     try:
         blue_filtered = array.copy()
 
+        # Direct assignment to 0. Uses '=' operator.
         blue_filtered[:, :, 0] = 0
         blue_filtered[:, :, 1] = 0
 
         plt.imshow(blue_filtered)
-        plt.title("Blue")
         plt.show()
         return blue_filtered
     except Exception as e:
@@ -84,18 +84,21 @@ def ft_blue(array):
 def ft_grey(array):
     """
     Converts the image to grayscale.
+    Allowed operators: =, /
     """
     try:
+        # Sums the channels (method) and divides by 3 ('/').
+        # (R + G + B) / 3
         grey_val = array.sum(axis=2) / 3
 
         grey_filtered = np.zeros_like(array)
 
+        # Broadcast the grey value to all 3 channels
         grey_filtered[:, :, 0] = grey_val
         grey_filtered[:, :, 1] = grey_val
         grey_filtered[:, :, 2] = grey_val
 
         plt.imshow(grey_filtered)
-        plt.title("Grey")
         plt.show()
         return grey_filtered
     except Exception as e:
