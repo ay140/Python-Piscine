@@ -18,6 +18,9 @@ def ft_load(path: str) -> np.ndarray:
             raise FileNotFoundError("File not found")
 
         with Image.open(path) as img:
+            if img.format not in ("JPEG", "JPG"):
+                print("Error: Image format must be JPEG or JPG.")
+                return np.array([])
             print(f"The format of image is: {img.format}")
 
             # Convert to RGB
